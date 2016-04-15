@@ -1,0 +1,213 @@
+Require Import BenB.
+
+(* ====================================================================== *)
+
+(* 
+   Titel: Kruispunt
+   ======
+   Auteurs:
+   [Hendrik Werner, Jasper Haasdijk, Jelle Loman, Sophie Fennema]
+*)
+
+(* ====================================================================== *)
+
+(*
+   [
+     Dit bestand moet door Coq uitgevoerd kunnen worden.
+     Uitleg in natuurlijke taal dient dan ook uitsluitend tussen
+     commentaartekens te staan.
+
+     Tekst die tussen rechte haken staat in dit sjabloon is bedoeld
+     om duidelijk te maken wat waar moet worden opgeschreven. 
+     In de definitieve versie dienen die blokken dan ook allemaal
+     vervangen te zijn door uw tekst.
+   ]
+   
+*)
+
+(*
+   Abstract:
+   =========
+   [
+     De veilige doorgang van een auto kruispunt.
+     Wij hebben voor dit probleem gekozen omdat het ons een 
+     interessante probleemstelling lijkt. Wij wilden graag wat 
+     anders doen dan een standaard uitgifte automaat (bijvoorbeeld
+     een koffiezet automaat). Ook geeft dit probleem ons de ruimte om
+     later de moeilijkheidsgraad zelf aan te passen mocht blijken 
+     dat het veel te simpel is.
+   ]
+
+   [
+     En voor het tweede deel van het werkstuk:
+     Schrijf in hoeverre het is gelukt om de correctheidsstelling te bewijzen.
+     Ging dat min of meer meteen goed of moesten er hele grote wijzigingen
+     in het model worden doorgevoerd ten opzichte van de versie die als
+     eerste deel van het werkstuk is ingeleverd?
+   ]
+
+*)
+
+(*
+   Focus:
+
+   Doel:
+   =====
+   [Verificatiemodel]
+
+
+   Fragment van de realiteit:
+   ==========================
+   [Het kruispunt, de bijbehorende stoplichten, de verkeersregels 
+    en de auto's die gebruik maken van het kruispunt
+    (die zich houden aan de verkeersregels)]
+
+
+   Perspectief:
+   ============
+   [De veilige doorgang van auto's op een kruispunt automatiseren door middel van stoplichten]
+
+*)
+
+
+(*
+   Vereenvoudigingen:
+   ==================
+   [
+     Afhankelijk van de focus binnen dit werkstuk mag u sommige zaken
+     versimpelen. Voor een systeem van thuiselektronica is het bijvoorbeeld
+     niet onredelijk om aan te nemen dat de netspanning constant is, ondanks
+     dat dat in werkelijkheid niet zo is. Maar voor een artefact dat een 
+     beveiliging tegen overspanning verzorgt, moeten de fluctuaties in de
+     netspanning natuurlijk wel worden gemodelleerd.
+
+     Schrijf hier expliciet op welke aannames u heeft gemaakt om het
+     systeem te versimpelen.
+     
+     Aannames:
+     De bestuurders van de auto's houden zich aan de verkeersregels
+   ]
+
+*)
+
+(* ====================================================================== *)
+
+(* Domeinmodel *)
+    
+Definition A: Set.
+(* Verzameling van alle auto's *)
+
+Definition S: Set.
+(* Verzameling van alle stoplichten die tot ons artefact behoren *)
+
+Definition V: Set.
+(* Verzameling van alle voorsoorteervakken die tot ons artefact behoren *)
+
+Definition T := R.
+(* Verzameling van alle tijdpunten 
+
+(* Domeinen (inclusief betekenis) *)
+
+(* Constanten (inclusief betekenis) *)
+
+(* Functies (inclusief betekenis) *)
+
+(* Predikaten (inclusief betekenis en metingen) *)
+
+(* ====================================================================== *)
+
+(* Hulppredikaten (inclusief betekenis) *)
+
+(*
+   [
+     Hier mag u zoveel hulppredikaten definieren als gewenst,
+     maar geef wel bij elke definitie de betekenis.
+   ]
+*)
+
+(* ====================================================================== *)
+
+(* Onderdelen *)
+
+(*
+   [
+     Bij elk onderdeel dient u het volgende te vermelden:
+    
+     Buiten commentaartekens:
+     - De 'Definition' voor Coq, opgemaakt in een leesbare layout die
+       de wiskundige structuur van de formule weerspiegelt.
+
+     Binnen commentaartekens:
+     - De specificatie van dit onderdeel in natuurlijke taal die uiteraard
+       consistent is met de formule voor Coq.
+     - Eventueel een korte toelichting over gemaakte keuzes.
+   ]
+*)
+
+(* ====================================================================== *)
+
+(* Specificatie van het geheel *)
+
+(*
+   [
+     Hier dient u te vermelden:
+
+     Buiten commentaartekens:
+     - De 'Definition' voor Coq, opgemaakt in een leesbare layout die
+       de wiskundige structuur van de formule weerspiegelt.
+
+     Binnen commentaartekens:
+     - De specificatie van het gehele artefact in natuurlijke taal die 
+       uiteraard consistent is met de formule voor Coq.
+     - Eventueel een korte toelichting over gemaakte keuzes.
+  ]
+*)
+
+(* ====================================================================== *)
+
+(* Extra's *)
+
+(*
+   [
+     De kans is groot dat u helemaal geen extra's nodig heeft!
+
+     Maar als blijkt dat u in het bewijs een aantal keer hetzelfde of
+     bijna hetzelfde moet bewijzen, kunt u daarvoor op deze plek een
+     'Lemma' definieren. U bewijst hier dan een keer dat lemma en in het
+     grote bewijs van de correctheidsstelling hoeft u alleen maar met
+     'apply' dat lemma toe te passen. Lemma's mag u altijd toevoegen
+     aan dit script.
+
+     Ook kan het voorkomen dat Coq moeite heeft met ogenschijnlijk triviale
+     eigenschappen over getallen, die niet zomaar met 'lin_solve' kunnen
+     worden opgelost. In zo'n geval kunt u na overleg met de docent hier een
+     'Axioma' definieren en dat later toepassen in het bewijs van de 
+     correctheidsstelling.
+   ]
+*)
+
+(* Correctheidsstelling *) 
+
+(* ====================================================================== *)
+
+(*
+   [
+     Normaal gesproken noteren we de correctheidsstelling als:
+     Theorem corstel:
+     Onderdeel1 /\ Onderdeel2 /\ Onderdeel3 -> SpecVanHetGeheel.
+
+     Maar in Coq is het makkelijker om onderstaande logisch equivalente
+     formulering te bewijzen:
+
+     Theorem corstel_equivalent:
+       Onderdeel1 
+     -> 
+        Onderdeel2 
+       ->
+          Onderdeel3
+        ->
+          SpecVanHetGeheel.
+     
+      Gebruik dan ook die tweede notatie!
+   ]
+*)
