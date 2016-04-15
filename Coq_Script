@@ -104,7 +104,7 @@ Definition V: Set.
 (* Verzameling van alle voorsoorteervakken die tot ons artefact behoren *)
 
 Definition T := R.
-(* Verzameling van alle tijdpunten 
+(* Verzameling van alle tijdpunten *)
 
 (* Domeinen (inclusief betekenis) *)
 
