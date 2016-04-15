@@ -1,2 +1,2 @@
 # Coq_Kruispunt
-Coq script
+Coq script. 
