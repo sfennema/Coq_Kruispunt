@@ -156,6 +156,7 @@ Definition moetGroenWorden (t:T) (s:S) :=
     /\
         geefKleur t s <> groen
 .
+(* Geeft aan of stoplicht s op tijpunt t groen moet worden *)
 
 (* ====================================================================== *)
 
