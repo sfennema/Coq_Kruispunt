@@ -123,8 +123,14 @@ Inductive WR := noord | oost | zuid | west.
 Variable geefRichting (* v *) : V -> RV.
 (* Geeft de voorsorteerrichting voor voorsorteervak v *)
 
+Variable geefStoplicht (* v *): V -> S.
+(* Geeft het stoplicht dat hoort bij voorsorteervak v *)
+
 Variable geefWindrichting (* s *) : S -> WR.
 (* Geeft de windrichting bij stoplicht s *)
+
+Variable geefKleur (* s *): S -> K.
+(* Geeft de stoplichtkleur voor stoplicht s *)
 
 (* Predikaten (inclusief betekenis en metingen) *)
 Variable autoAanwezig (* t v *): T -> V -> Prop.
