@@ -126,6 +126,9 @@ Variable geefRichting (* v *) : V -> RV.
 Variable geefStoplicht (* v *): V -> S.
 (* Geeft het stoplicht dat hoort bij voorsorteervak v *)
 
+Variable geefVoorsorteervak (* s *) : S -> V.
+(* Geeft het voorsorteervak dat hoort bij stoplicht s *)
+
 Variable geefWindrichting (* s *) : S -> WR.
 (* Geeft de windrichting bij stoplicht s *)
 
