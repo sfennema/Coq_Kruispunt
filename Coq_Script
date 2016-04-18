@@ -218,6 +218,31 @@ Definition bestuuringseenheid :=
     - ze worden eerst oranje en daarna rood nadat ze 30 seconden groen waren
 *)
 
+Definition stoplicht :=
+    forall t:T,
+        forall s:S,
+                (
+                        geefKleur t s = groen
+                    ->
+                        isGroen (t+1) s
+                )
+            /\
+                (
+                        geefKleur t s = oranje
+                    ->
+                        isOranje (t+1) s
+                )
+            /\
+                (
+                        geefKleur t s = rood
+                    ->
+                        isRood (t+1) s
+                )
+.
+(*
+    Stoplichten wijzigen hun kleur op de volgende tijdstip nadat ze een bijbehorend signal hebben gekregen.
+*)
+
 (* ====================================================================== *)
 
 (* Specificatie van het geheel *)
