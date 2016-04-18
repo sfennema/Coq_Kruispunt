@@ -9,3 +9,4 @@ COQ:  (Formules + Natuurlijke taal)
 + Eventueel hulppredikaten   
 + Specificaties van de onderdelen  
 + Specificatie van het geheel  
++ Oplossing als meerdere stoplichten tegelijk groen moeten en mogen worden
