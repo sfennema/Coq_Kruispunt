@@ -94,6 +94,8 @@ Require Import BenB.
 
 (* Domeinmodel *)
     
+(* Domeinen (inclusief betekenis) *)
+
 Definition A: Set.
 (* Verzameling van alle auto's *)
 
@@ -105,8 +107,6 @@ Definition V: Set.
 
 Definition T := R.
 (* Verzameling van alle tijdpunten *)
-
-(* Domeinen (inclusief betekenis) *)
 
 (* Constanten (inclusief betekenis) *)
 
