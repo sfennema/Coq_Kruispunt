@@ -114,6 +114,9 @@ Inductive RV := rechtsaf | rechtdoor | linksaf.
 Inductive K := rood | groen | oranje.
 (* Eindige set met alle kleuren van stoplichten *)
 
+Inductive WR := noord | oost | zuid | west.
+(* Eindige set met windrichtingen *)
+
 (* Constanten (inclusief betekenis) *)
 
 (* Functies (inclusief betekenis) *)
@@ -122,6 +125,9 @@ Variable geefRichting (* v *) : V -> RV.
 
 Variable geefStoplicht (* v *): V -> S.
 (* Geeft het stoplicht dat hoort bij voorsorteervak v *)
+
+Variable geefWindrichting (* s *) : S -> WR.
+(* Geeft de windrichting bij stoplicht s *)
 
 (* Predikaten (inclusief betekenis en metingen) *)
 Variable autoAanwezig (* t v *): T -> V -> Prop.
