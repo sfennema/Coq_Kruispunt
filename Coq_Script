@@ -102,21 +102,22 @@ Variable A : Set.
 Variable S : Set.
 (* Verzameling van alle stoplichten die tot ons artefact behoren *)
 
-Variables V : Set.
+Variable V : Set.
 (* Verzameling van alle voorsoorteervakken die tot ons artefact behoren *)
 
 Definition T := R.
 (* Verzameling van alle tijdpunten *)
 
+Inductive RV := rechtsaf | rechtdoor | linksaf.
+(* Eindige set met alle voorsorteerrichtingen *)
+
 (* Constanten (inclusief betekenis) *)
 
 (* Functies (inclusief betekenis) *)
+Variable geefRichting (* x *) : V -> RV.
+(* Geeft de voorsorteerrichting voor voorsorteervak x *)
 
 (* Predikaten (inclusief betekenis en metingen) *)
-
-Variable autoAanwezig (* t v *): T -> V -> Prop.
-(* Op tijdstip t is er een auto aanwezig in vorsorteervak v *)
-(* Kijken *)
 
 (* ====================================================================== *)
 
