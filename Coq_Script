@@ -96,13 +96,13 @@ Require Import BenB.
     
 (* Domeinen (inclusief betekenis) *)
 
-Definition A: Set.
+Definition A := Set.
 (* Verzameling van alle auto's *)
 
-Definition S: Set.
+Definition S := Set.
 (* Verzameling van alle stoplichten die tot ons artefact behoren *)
 
-Definition V: Set.
+Definition V := Set.
 (* Verzameling van alle voorsoorteervakken die tot ons artefact behoren *)
 
 Definition T := R.
