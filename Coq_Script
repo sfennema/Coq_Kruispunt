@@ -140,6 +140,18 @@ Variable autoAanwezig (* t v *): T -> V -> Prop.
 (* Op tijdstip t is er een auto aanwezig in vorsorteervak v *)
 (* Kijken *)
 
+Variable isGroen (* t s *) : T -> S -> Prop.
+(* Op tijdstip t geeft stoplicht s groen licht *)
+(* Kijk naar de golflengte *)
+
+Variable isOranje (* t s *) : T -> S -> Prop.
+(* Op tijdstip t geeft stoplicht s oranje licht *)
+(* Kijk naar de golflengte *)
+
+Variable isRood (* t s *) : T -> S -> Prop.
+(* Op tijdstip t geeft stoplicht s rood licht *)
+(* Kijk naar de golflengte *)
+
 (* ====================================================================== *)
 
 (* Hulppredikaten (inclusief betekenis) *)
