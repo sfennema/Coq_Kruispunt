@@ -111,6 +111,9 @@ Definition T := R.
 Inductive RV := rechtsaf | rechtdoor | linksaf.
 (* Eindige set met alle voorsorteerrichtingen *)
 
+Inductive K := rood | groen | oranje.
+(* Eindige set met alle kleuren van stoplichten *)
+
 (* Constanten (inclusief betekenis) *)
 
 (* Functies (inclusief betekenis) *)
