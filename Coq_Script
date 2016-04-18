@@ -175,9 +175,9 @@ Definition groenWorden (t:T) (s:S) :=
 Definition roodWorden (t:T) (s:S) :=
         (
             forall t1:T,
-                    t in [t-30, t]
+                    t1 in [t-30, t]
                 ->
-                    geefKleur (t+1) s
+                    geefKleur t1 s = groen
         )
     ->
             geefKleur (t+1) s = oranje
