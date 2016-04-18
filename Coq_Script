@@ -207,6 +207,19 @@ Definition roodWorden (t:T) (s:S) :=
    ]
 *)
 
+Definition bestuuringseenheid :=
+    forall t:T,
+        forall s:S,
+                groenWorden t s
+            /\
+                roodWorden t s
+.
+(*
+    Vor alle tijpunten en alle stoplichten geldt:
+    - ze worden groen als ze groen moeten en mogen worden
+    - ze worden eerst oranje en daarna rood nadat ze 30 seconden groen waren
+*)
+
 (* ====================================================================== *)
 
 (* Specificatie van het geheel *)
