@@ -165,19 +165,19 @@ Defintion magGroenWorden (t:T) (s:S) :=
 *)
 (* Geeft aan of een stoplicht groen mag worden. *)
 
-Definition groenWorden (t:T) (v:V) :=
-          moetGroenWorden t v
+Definition groenWorden (t:T) (s:S) :=
+          moetGroenWorden t s
       /\
-          magGroenWorden t v
+          magGroenWorden t s
   ->
-      geefKleur (t+1) (geefStoplicht v) = groen
+      geefKleur (t+1) s = groen
 .
 (* Geeft aan dat stoplichten groen worden als ze zowel groen moeten als mogen worden *)
 
 Definition roodWorden (t:T) (v:V) :=
         (
             forall t1:T,
-                    t in [t-30, t]
+                    t in (t-30, t)
                 ->
                     geefKleur (t+1) (geefStoplicht v)
         )
@@ -186,7 +186,6 @@ Definition roodWorden (t:T) (v:V) :=
         /\
             geefKleur (t+2) (geefStoplicht v) = rood
 .
-(* Geeft aan dat stoplichten eerst oranje en daarna rood worden nadat ze 30 seconden groen waren *)
 
 (* ====================================================================== *)
 
