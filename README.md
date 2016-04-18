@@ -1,6 +1,22 @@
 # Coq_Kruispunt
 Coq script. 
 
+# Setup
+
+1. Clone Repository
+> git clone https://github.com/jhaasdijk/Coq_Kruispunt.git
+
+2. Fork Repository
+
+3. Add remote branches
+> git remote add ... ...
+
+    * Jasper's version
+    > git remote add jasper https://github.com/jhaasdijk/Coq_Kruispunt.git
+
+    * Own version
+    > git remote add name ...
+
 # Workflow
 
 1. Fetch newest version
