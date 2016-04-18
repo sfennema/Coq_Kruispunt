@@ -114,8 +114,8 @@ Inductive RV := rechtsaf | rechtdoor | linksaf.
 (* Constanten (inclusief betekenis) *)
 
 (* Functies (inclusief betekenis) *)
-Variable geefRichting (* x *) : V -> RV.
-(* Geeft de voorsorteerrichting voor voorsorteervak x *)
+Variable geefRichting (* v *) : V -> RV.
+(* Geeft de voorsorteerrichting voor voorsorteervak v *)
 
 (* Predikaten (inclusief betekenis en metingen) *)
 Variable autoAanwezig (* t v *): T -> V -> Prop.
