@@ -158,11 +158,9 @@ Definition moetGroenWorden (t:T) (s:S) :=
 .
 (* Geeft aan of stoplicht s op tijpunt t groen moet worden *)
 
-(*
-Defintion magGroenWorden (t:T) (s:S) :=
-    (* todo *)
+Definition magGroenWorden (t:T) (s:S) :=
+    (* todo *)True
 .
-*)
 (* Geeft aan of een stoplicht groen mag worden. *)
 
 Definition groenWorden (t:T) (s:S) :=
