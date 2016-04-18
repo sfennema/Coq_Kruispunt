@@ -39,3 +39,8 @@ Coq script.
 > git push github master
 
 7. Create pull request
+
+# Git Cheat Sheet
+
+[git_cheat_sheet]: https://www.git-tower.com/blog/content/posts/54-git-cheat-sheet/git-cheat-sheet-large01.png "Git Cheat Sheet"
+![Git Cheat Sheet][git_cheat_sheet]
