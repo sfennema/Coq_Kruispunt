@@ -148,6 +148,10 @@ Variable isOranje (* t s *) : T -> S -> Prop.
 (* Op tijdstip t geeft stoplicht s oranje licht *)
 (* Kijk naar de golflengte *)
 
+Variable isRood (* t s *) : T -> S -> Prop.
+(* Op tijdstip t geeft stoplicht s rood licht *)
+(* Kijk naar de golflengte *)
+
 (* ====================================================================== *)
 
 (* Hulppredikaten (inclusief betekenis) *)
