@@ -174,18 +174,19 @@ Definition groenWorden (t:T) (s:S) :=
 .
 (* Geeft aan dat stoplichten groen worden als ze zowel groen moeten als mogen worden *)
 
-Definition roodWorden (t:T) (v:V) :=
+Definition roodWorden (t:T) (s:S) :=
         (
             forall t1:T,
-                    t in (t-30, t)
+                    t in [t-30, t]
                 ->
-                    geefKleur (t+1) (geefStoplicht v)
+                    geefKleur (t+1) s
         )
     ->
-            geefKleur (t+1) (geefStolicht v) = oranje
+            geefKleur (t+1) s = oranje
         /\
-            geefKleur (t+2) (geefStoplicht v) = rood
+            geefKleur (t+2) s = rood
 .
+(* Geeft aan dat stoplichten eerst oranje en daarna rood worden nadat ze 30 seconden groen waren *)
 
 (* ====================================================================== *)
 
