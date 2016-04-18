@@ -120,6 +120,9 @@ Inductive K := rood | groen | oranje.
 Variable geefRichting (* v *) : V -> RV.
 (* Geeft de voorsorteerrichting voor voorsorteervak v *)
 
+Variable geefStoplicht (* v *): V -> S.
+(* Geeft het stoplicht dat hoort bij voorsorteervak v *)
+
 (* Predikaten (inclusief betekenis en metingen) *)
 Variable autoAanwezig (* t v *): T -> V -> Prop.
 (* Op tijdstip t is er een auto aanwezig in vorsorteervak v *)
