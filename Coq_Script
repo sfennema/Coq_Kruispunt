@@ -133,7 +133,7 @@ Variable geefWindrichting (* s *) : S -> WR.
 (* Geeft de windrichting bij stoplicht s *)
 
 Variable geefKleur (* t s *): T -> S -> K.
-(* Geeft de stoplichtkleur voor stoplicht s op tijpunt t *)
+(* Geeft de stoplichtkleur voor stoplicht s op tijdpunt t *)
 
 (* Predikaten (inclusief betekenis en metingen) *)
 Variable autoAanwezig (* t v *): T -> V -> Prop.
