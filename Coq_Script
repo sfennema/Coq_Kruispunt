@@ -165,7 +165,7 @@ Defintion magGroenWorden (t:T) (s:S) :=
 *)
 (* Geeft aan of een stoplicht groen mag worden. *)
 
-Definition groenWorden (t:T) (s:S) :=
+Definition groenWorden (t:T) (v:V) :=
           moetGroenWorden t v
       /\
           magGroenWorden t v
