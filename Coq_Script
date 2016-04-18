@@ -118,6 +118,9 @@ Variable geefRichting (* x *) : V -> RV.
 (* Geeft de voorsorteerrichting voor voorsorteervak x *)
 
 (* Predikaten (inclusief betekenis en metingen) *)
+Variable autoAanwezig (* t v *): T -> V -> Prop.
+(* Op tijdstip t is er een auto aanwezig in vorsorteervak v *)
+(* Kijken *)
 
 (* ====================================================================== *)
 
