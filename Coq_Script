@@ -165,12 +165,12 @@ Defintion magGroenWorden (t:T) (s:S) :=
 *)
 (* Geeft aan of een stoplicht groen mag worden. *)
 
-Definition groenWorden (t:T) (v:V) :=
-          moetGroenWorden t v
+Definition groenWorden (t:T) (s:S) :=
+          moetGroenWorden t s
       /\
-          magGroenWorden t v
+          magGroenWorden t s
   ->
-      geefKleur (t+1) (geefStoplicht v) = groen
+      geefKleur (t+1) s = groen
 .
 (* Geeft aan dat stoplichten groen worden als ze zowel groen moeten als mogen worden *)
 
