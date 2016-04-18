@@ -151,6 +151,12 @@ Variable autoAanwezig (* t v *): T -> V -> Prop.
    ]
 *)
 
+Definition moetGroenWorden (t:T) (s:S) :=
+        autoAanwezig t (geefVoorsorteervak s)
+    /\
+        geefKleur t s <> groen
+.
+
 (* ====================================================================== *)
 
 (* Onderdelen *)
