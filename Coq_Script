@@ -108,13 +108,13 @@ Variable V : Set.
 Definition T := R.
 (* Verzameling van alle tijdpunten *)
 
-Inductive RV := rechtsaf | rechtdoor | linksaf.
+Inductive RV:Set := rechtsaf | rechtdoor | linksaf.
 (* Eindige set met alle voorsorteerrichtingen *)
 
-Inductive K := rood | groen | oranje.
+Inductive K:Set := rood | groen | oranje.
 (* Eindige set met alle kleuren van stoplichten *)
 
-Inductive WR := noord | oost | zuid | west.
+Inductive WR:Set := noord | oost | zuid | west.
 (* Eindige set met windrichtingen *)
 
 (* Constanten (inclusief betekenis) *)
