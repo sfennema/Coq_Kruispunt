@@ -235,6 +235,25 @@ Definition isTegenoverVan (s s1:S) :=
     geefWindrichting s1 = oost
 .
  (* Controleert of stoplicht s tegenover van stoplicht s1 staat *)
+
+Definition isRechtsVan (s s1:S) :=
+          geefWindrichting s = noord
+      /\
+          geefWindrichting s1 = west
+  \/
+          geefWindrichting s = west
+      /\
+          geefWindrichting s1 = zuid
+  \/
+          geefWindrichting s = zuid
+      /\
+          geefWindrichting s1 = oost
+  \/
+          geefWindrichting s = oost
+      /\
+          geefWindrichting s1 = noord
+.
+(* Controleert of stoplicht s1 90° tegen de klok in ten opzichte van stoplicht s ligt *)
  
  Definition kruisenTegenover (s s1:S) :=
  	s <> s1
