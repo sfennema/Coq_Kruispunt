@@ -198,7 +198,7 @@ Definition groenWorden (t:T) (s:S) :=
   ->
       geefKleur (t+1) s = groen
 .
-(* Geeft aan dat stoplichten groen worden als ze zowel groen moeten als mogen worden *)
+(* Geeft aan dat stoplicht s op moment t+1 groen wordt als het op moment t groen moet worden en groen mag worden *)
 
 Definition roodWorden (t:T) (s:S) :=
         (
