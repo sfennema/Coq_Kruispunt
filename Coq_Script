@@ -186,6 +186,11 @@ Definition magGroenWorden (t:T) (s:S) :=
 .
 (* Geeft aan of een stoplicht groen mag worden. *)
 
+Definition kruisen (s s1 : S) :=
+   (* TODO *)True
+.
+(* Geeft aan of stoplicht s met stoplicht s1 kruist *) 
+
 Definition groenWorden (t:T) (s:S) :=
           moetGroenWorden t s
       /\
