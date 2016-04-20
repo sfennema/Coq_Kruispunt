@@ -171,7 +171,18 @@ Definition moetGroenWorden (t:T) (s:S) :=
 (* Geeft aan of stoplicht s op tijpunt t groen moet worden *)
 
 Definition magGroenWorden (t:T) (s:S) :=
-    (* todo *)True
+   forall s1:S,
+         s <> s1
+      ->
+         (
+            ~kruisen s s1
+         \/
+            (
+               kruisen s s1
+            ->
+               isRood t s1
+            )
+         )
 .
 (* Geeft aan of een stoplicht groen mag worden. *)
 
