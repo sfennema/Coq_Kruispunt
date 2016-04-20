@@ -301,9 +301,7 @@ Definition kruisenRechts (s s1:S) :=
 		(
 			~(geefVoorsorteervak s = rechtsaf)
 		\/		
-
 			geefVoorsorteervak s = rechtdoor
-		 	   
 		\/
 			(      
 				geefVoorsorteervak s = linksaf
