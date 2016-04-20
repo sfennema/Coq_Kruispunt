@@ -212,7 +212,10 @@ Definition roodWorden (t:T) (s:S) :=
         /\
             geefKleur (t+2) s = rood
 .
-(* Geeft aan dat stoplichten eerst oranje en daarna rood worden nadat ze 30 seconden groen waren *)
+(*
+    Geeft aan dat stoplicht s als het in de afgelopen 30 seconden groen was op tijdpunt t+1 de kleur oranje wordt gegeven
+    en op tijdpunt t+2 de kleur rood wordt gegeven
+*)
 
 Definition tegenover (s s1:S) :=
         	  s <> s1
