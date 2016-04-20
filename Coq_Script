@@ -265,6 +265,15 @@ Definition tegenover (s s1:S) :=
 .            
 (* Controleert of stoplichten s en s1 die tegenover elkaar staan kruisen *)
 
+Definition isVeilig :=
+    forall t:T,
+        forall s:S,
+                geefKleur t s = groen
+            ->
+                magGroenWorden t s
+.
+(* Geeft aan dat als een stoplicht de kleur groen wordt gegeven dat het groen mag worden *)
+
 (* ====================================================================== *)
 
 (* Onderdelen *)
