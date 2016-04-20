@@ -265,6 +265,38 @@ Definition tegenover (s s1:S) :=
 .            
 (* Controleert of stoplichten s en s1 die tegenover elkaar staan kruisen *)
 
+Definition kruisenNaast (s s1:S)
+        s<> s1
+    /\
+        ~tegenover
+    /\
+         (
+                geefVoorsorteervak s = rechtsaf
+            /\
+                geefVoorsorteervak s1 = linksaf
+         )
+        \/
+         (
+                geefVoorsorteervak s = rechtdoor
+            /\
+                (    
+                 geefVoorsorteervak s1 = links
+                \/
+                 geefVoorsorteervak s1 = rechtdoor
+                )
+         )
+        \/
+         (      geefVoorsorteervak s = links
+            /\
+                (
+                 geefVoorsorteervak s1 = rechtdoor
+                \/
+                 geefVoorsorteervak s1 = links
+                )
+         )
+ .
+ (* Controleert of stoplichten s en s1 die naast elkaar staan kruisen *)
+
 (* ====================================================================== *)
 
 (* Onderdelen *)
