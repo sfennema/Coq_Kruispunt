@@ -288,7 +288,7 @@ Definition kruisenRechts (s s1:S)
 			)
 		)
 .
-(* Controleert of s1 (90° tegen de klok in van s) en s elkaar kruisen *)
+(* Controleert of s1 (90° tegen de klok in ten opzichte van s) en s elkaar kruisen *)
 
 Definition isVeilig :=
     forall t:T,
