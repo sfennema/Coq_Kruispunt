@@ -284,6 +284,20 @@ Definition stoplicht :=
      - Eventueel een korte toelichting over gemaakte keuzes.
   ]
 *)
+Definition kruispunt :=
+	forall t:T,
+		forall v:V,
+			autoAanwezig t v
+		  ->
+			exists t1:T,
+				t1 > t
+			  /\
+			  	isGroen t1 (geefStoplicht v)
+			  /\
+			  	isOranje (t1+30) (geefStoplicht v)
+			  /\
+			  	isRood (t1+31) (geefStoplicht v)
+.
 
 (* ====================================================================== *)
 
