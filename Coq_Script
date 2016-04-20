@@ -306,12 +306,12 @@ Definition kruisenRechts (s s1:S) :=
 		 	   
 		\/
 			(      
-				geefVoorsorteervak s = links
+				geefVoorsorteervak s = linksaf
 	     	       /\
 			        (
 				         geefVoorsorteervak s1 = rechtdoor
 			        \/
-				         geefVoorsorteervak s1 = links
+				         geefVoorsorteervak s1 = linksaf
 		        	)
 			)
 		)
