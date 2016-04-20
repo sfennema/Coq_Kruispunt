@@ -170,6 +170,11 @@ Definition moetGroenWorden (t:T) (s:S) :=
 .
 (* Geeft aan of stoplicht s op tijpunt t groen moet worden *)
 
+Definition kruisen (s s1 : S) :=
+   (* TODO *)True
+.
+(* Geeft aan of stoplicht s met stoplicht s1 kruist *) 
+
 Definition magGroenWorden (t:T) (s:S) :=
    forall s1:S,
          s <> s1
@@ -185,11 +190,6 @@ Definition magGroenWorden (t:T) (s:S) :=
          )
 .
 (* Geeft aan of stoplicht s op tijdpunt t groen mag worden. *)
-
-Definition kruisen (s s1 : S) :=
-   (* TODO *)True
-.
-(* Geeft aan of stoplicht s met stoplicht s1 kruist *) 
 
 Definition groenWorden (t:T) (s:S) :=
           moetGroenWorden t s
