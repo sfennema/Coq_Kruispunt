@@ -137,7 +137,7 @@ Variable geefKleur (* t s *): T -> S -> K.
 
 (* Predikaten (inclusief betekenis en metingen) *)
 Variable autoAanwezig (* t v *): T -> V -> Prop.
-(* Op tijdstip t is er een auto aanwezig in vorsorteervak v *)
+(* Op tijdstip t is er een auto aanwezig in voorsorteervak v *)
 (* Kijken *)
 
 Variable isGroen (* t s *) : T -> S -> Prop.
@@ -248,7 +248,7 @@ Definition isTegenoverVan (s s1:S) :=
                 	        (
                 	            geefVoorsorteervak s1 = rechtdoor 
                 	        \/
-                	            geefVoorstorteervak s1 = rechtsaf
+                	            geefVoorsorteervak s1 = rechtsaf
                 	        )
                 	)
                 \/
@@ -326,7 +326,7 @@ Definition bestuuringseenheid :=
                 roodWorden t s
 .
 (*
-    Vor alle tijpunten en alle stoplichten geldt:
+    Voor alle tijpunten en alle stoplichten geldt:
     - ze worden groen als ze groen moeten en mogen worden
     - ze worden eerst oranje en daarna rood nadat ze 30 seconden groen waren
 *)
