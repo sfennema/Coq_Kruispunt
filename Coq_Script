@@ -218,25 +218,21 @@ Definition roodWorden (t:T) (s:S) :=
 *)
 
 Definition tegenover (s s1:S) :=
-      s <> s1
-  /\
-      (
-          geefWindrichting s = noord
-        /\
-          geefWindrichting s1 = zuid
-      \/
-          geefWindrichting s = zuid
-        /\
-          geefWindrichting s1 = noord
-      \/
-          geefWindrichting s = oost
-        /\
-          geefWindrichting s1 = west
-      \/
-          geefWindrichting s = west
-        /\
-        geefWindrichting s1 = oost
-      )
+      geefWindrichting s = noord
+    /\
+      geefWindrichting s1 = zuid
+  \/
+      geefWindrichting s = zuid
+    /\
+      geefWindrichting s1 = noord
+  \/
+      geefWindrichting s = oost
+    /\
+      geefWindrichting s1 = west
+  \/
+      geefWindrichting s = west
+    /\
+    geefWindrichting s1 = oost
 .
  (* Controleert of stoplicht s tegenover van stoplicht s1 staat *)
 
