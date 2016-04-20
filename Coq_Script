@@ -272,7 +272,7 @@ Definition isVeilig :=
             ->
                 magGroenWorden t s
 .
-(* Geeft aan dat als een stoplicht de kleur groen wordt gegeven dat het groen mag worden *)
+(* Geeft aan dat als aan een stoplicht de kleur groen wordt gegeven dat het groen mag worden *)
 
 (* ====================================================================== *)
 
