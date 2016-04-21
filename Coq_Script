@@ -172,36 +172,6 @@ Definition moetGroenWorden (t:T) (s:S) :=
 .
 (* Geeft aan of stoplicht s op tijpunt t groen moet worden *)
 
-Definition kruisen (s s1 : S) :=
-   (* TODO *)True
-.
-(* Geeft aan of stoplicht s met stoplicht s1 kruist *) 
-
-Definition magGroenWorden (t:T) (s:S) :=
-   forall s1:S,
-         s <> s1
-      ->
-         (
-            ~kruisen s s1
-         \/
-            (
-               kruisen s s1
-            ->
-               isRood t s1
-            )
-         )
-.
-(* Geeft aan of stoplicht s op tijdpunt t groen mag worden. *)
-
-Definition groenWorden (t:T) (s:S) :=
-          moetGroenWorden t s
-      /\
-          magGroenWorden t s
-  ->
-      geefKleur (t+1) s = groen
-.
-(* Geeft aan dat stoplicht s op moment t+1 groen wordt als het op moment t groen moet worden en groen mag worden *)
-
 Definition roodWorden (t:T) (s:S) :=
         (
             forall t1:T,
@@ -346,6 +316,52 @@ Definition kruisenLinks (s s1:S) :=
 		)
 .
 (* Controleert of s1 (90° met de klok mee in ten opzichte van s) en s elkaar kruisen*)
+
+Definition kruisen (s s1 : S) :=
+        (
+            isTegenoverVan s s1
+        ->
+            kruisenTegenover s s1
+        )
+    /\
+        (
+            isRechtsVan s s1
+        ->
+            kruisenRechts s s1
+        )
+    /\
+        (
+            isLinksVan s s1
+        ->
+            kruisenLinks s s1
+        )
+.
+(* Geeft aan of stoplicht s met stoplicht s1 kruist *)
+
+Definition magGroenWorden (t:T) (s:S) :=
+   forall s1:S,
+         s <> s1
+      ->
+         (
+            ~kruisen s s1
+         \/
+            (
+               kruisen s s1
+            ->
+               isRood t s1
+            )
+         )
+.
+(* Geeft aan of stoplicht s op tijdpunt t groen mag worden. *)
+
+Definition groenWorden (t:T) (s:S) :=
+          moetGroenWorden t s
+      /\
+          magGroenWorden t s
+  ->
+      geefKleur (t+1) s = groen
+.
+(* Geeft aan dat stoplicht s op moment t+1 groen wordt als het op moment t groen moet worden en groen mag worden *)
 
 Definition isVeilig :=
     forall t:T,
