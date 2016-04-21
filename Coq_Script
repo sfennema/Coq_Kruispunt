@@ -366,7 +366,7 @@ Definition groenWorden (t:T) (s:S) :=
 Definition isVeilig :=
     forall t:T,
         forall s:S,
-                geefKleur t s = groen
+                geefKleur (t+1) s = groen
             ->
                 magGroenWorden t s
 .
