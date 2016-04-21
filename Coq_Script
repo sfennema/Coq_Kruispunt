@@ -293,7 +293,7 @@ Definition isLinksVan (s s1:S) :=
 .            
 (* Controleert of stoplichten s en s1 die tegenover elkaar staan kruisen *)
 
- Definition kruisenTegenover (s s1:S) :=
+ Definition kruisenRechts (s s1:S) :=
  	s <> s1
  /\ 
 		isTegenoverVan s s1
