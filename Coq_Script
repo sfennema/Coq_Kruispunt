@@ -118,6 +118,8 @@ Inductive WR:Set := noord | oost | zuid | west.
 (* Eindige set met windrichtingen *)
 
 (* Constanten (inclusief betekenis) *)
+Definition tijdGroen := 30.
+(* Geeft aan hoelang stoplichten groen blijven *)
 
 (* Functies (inclusief betekenis) *)
 Variable geefRichting (* v *) : V -> RV.
