@@ -271,22 +271,22 @@ Definition isLinksVan (s s1:S) :=
         /\
             ~(
             		(
-            			geefVoorsorteervak s = rechtdoor
+            			geefRichting(geefVoorsorteervak s) = rechtdoor
                 	    /\
                 	        (
-                	            geefVoorsorteervak s1 = rechtdoor 
+                	            geefRichting(geefVoorsorteervak s1) = rechtdoor 
                 	        \/
-                	            geefVoorsorteervak s1 = rechtsaf
+                	            geefRichting(geefVoorsorteervak s1) = rechtsaf
                 	        )
                 	)
                 \/
                 	(
-                		geefVoorsorteervak s = rechtsaf
+                		geefRichting(geefVoorsorteervak s) = rechtsaf
                 	    /\
                 	        (
-                	            geefVoorsorteervak s1 = rechtdoor
+                	            geefRichting(geefVoorsorteervak s1) = rechtdoor
                 	        \/
-                	            geefVoorsorteervak s1 = rechtsaf
+                	            geefRichting(geefVoorsorteervak s1) = rechtsaf
 				)
                 	)
             )
