@@ -205,7 +205,7 @@ Definition groenWorden (t:T) (s:S) :=
 Definition roodWorden (t:T) (s:S) :=
         (
             forall t1:T,
-                    t1 in [t-30, t]
+                    t1 in [t-tijdGroen, t]
                 ->
                     geefKleur t1 s = groen
         )
@@ -215,7 +215,7 @@ Definition roodWorden (t:T) (s:S) :=
             geefKleur (t+2) s = rood
 .
 (*
-    Geeft aan dat stoplicht s als het in de afgelopen 30 seconden groen was op tijdpunt t+1 de kleur oranje wordt gegeven
+    Geeft aan dat stoplicht s als het in de afgelopen <tijdGroen> seconden groen was op tijdpunt t+1 de kleur oranje wordt gegeven
     en op tijdpunt t+2 de kleur rood wordt gegeven
 *)
 
@@ -385,7 +385,7 @@ Definition bestuuringseenheid :=
 (*
     Voor alle tijpunten en alle stoplichten geldt:
     - ze worden groen als ze groen moeten en mogen worden
-    - ze worden eerst oranje en daarna rood nadat ze 30 seconden groen waren
+    - ze worden eerst oranje en daarna rood nadat ze <tijdGroen> seconden groen waren
 *)
 
 Definition stoplicht :=
@@ -441,9 +441,9 @@ Definition kruispunt :=
 			  /\
 			  	isGroen t1 (geefStoplicht v)
 			  /\
-			  	isOranje (t1+30) (geefStoplicht v)
+			  	isOranje (t1+tijdGroen+2) (geefStoplicht v)
 			  /\
-			  	isRood (t1+31) (geefStoplicht v)
+			  	isRood (t1+tijdGroen+3) (geefStoplicht v)
 .
 
 (* ====================================================================== *)
