@@ -425,7 +425,7 @@ Definition stoplicht (s:S) :=
             )
 .
 (*
-    Stoplicht s wijzigt zijn kleur op de volgende tijdstip nadat hij een bijbehorend signal heeft gekregen.
+    Stoplicht s wijzigt zijn kleur op de volgende tijdstip nadat hij een bijbehorend signaal heeft gekregen.
 *)
 
 (* ====================================================================== *)
