@@ -11,8 +11,8 @@ Coq script.
 3. Add remote branches
 > git remote add ... ...
 
-    * Jasper's version
-    > git remote add jasper https://github.com/jhaasdijk/Coq_Kruispunt.git
+    * jhaasdijk's version
+    > git remote add jhaasdijk https://github.com/jhaasdijk/Coq_Kruispunt.git
 
     * Own version
     > git remote add name ...
@@ -20,10 +20,10 @@ Coq script.
 # Workflow
 
 1. Fetch newest version
-> git fetch jasper
+> git fetch jhaasdijk
 
 2. Merge fetched version
-> git merge jasper
+> git merge jhaasdijk
 
 3. Change something
 
