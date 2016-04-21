@@ -461,6 +461,13 @@ Definition kruispunt :=
 			  /\
 			  	isRood (t1+tijdGroen+3) (geefStoplicht v)
 .
+(*
+    Voor alle tijdpunten en alle voorsorteervakken geldt dat als er op
+    tijdpunt t een auto in voorsorteervak v staat dan is er een later
+    tijdpunt t1 waarvoor geldt dat het bij voorsorteervak v horende
+    stoplicht op moment t1 groen, op moment t1+<tijdGroen>+2 oranje,
+    en op tijdpunt t1+<tijdGroen>+3 rood is.
+*)
 
 (* ====================================================================== *)
 
