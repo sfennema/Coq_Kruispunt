@@ -467,6 +467,9 @@ Definition kruispunt :=
     tijdpunt t1 waarvoor geldt dat het bij voorsorteervak v horende
     stoplicht op moment t1 groen, op moment t1+<tijdGroen>+2 oranje,
     en op tijdpunt t1+<tijdGroen>+3 rood is.
+
+    Wij hebben ervoor gekozen om geen stroom in ons model op te nemen omdat het
+    niet interessant is en naar onze mening niets toevoegt.
 *)
 
 (* ====================================================================== *)
