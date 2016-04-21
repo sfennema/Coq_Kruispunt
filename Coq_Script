@@ -293,27 +293,33 @@ Definition isLinksVan (s s1:S) :=
 .            
 (* Controleert of stoplichten s en s1 die tegenover elkaar staan kruisen *)
 
-Definition kruisenRechts (s s1:S) :=
-		s <> s1
-	/\
-        	isRechtsVan s s1
-	/\
-		(
-			~(geefVoorsorteervak s = rechtsaf)
-		\/		
-			geefVoorsorteervak s = rechtdoor
-		\/
-			(      
-				geefVoorsorteervak s = linksaf
-	     	       /\
-			        (
-				         geefVoorsorteervak s1 = rechtdoor
-			        \/
-				         geefVoorsorteervak s1 = linksaf
-		        	)
-			)
-		)
-.
+ Definition kruisenTegenover (s s1:S) :=
+ 	s <> s1
+ /\ 
+		isTegenoverVan s s1
+        /\
+            ~(
+            		(
+            			geefRichting(geefVoorsorteervak s) = rechtdoor
+                	    /\
+                	        (
+                	            geefRichting(geefVoorsorteervak s1) = rechtdoor 
+                	        \/
+                	            geefRichting(geefVoorsorteervak s1) = rechtsaf
+                	        )
+                	)
+                \/
+                	(
+                		geefRichting(geefVoorsorteervak s) = rechtsaf
+                	    /\
+                	        (
+                	            geefRichting(geefVoorsorteervak s1) = rechtdoor
+                	        \/
+                	            geefRichting(geefVoorsorteervak s1) = rechtsaf
+				)
+                	)
+            )
+.            
 (* Controleert of s1 (90° tegen de klok in ten opzichte van s) en s elkaar kruisen *)
 
 Definition kruisenLinks (s s1:S) :=
