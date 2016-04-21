@@ -316,6 +316,29 @@ Definition kruisenRechts (s s1:S) :=
 .
 (* Controleert of s1 (90° tegen de klok in ten opzichte van s) en s elkaar kruisen *)
 
+Definition kruisenLinks (s s1:S) :=
+		s <> s1
+	/\
+		isLinksVan s s1
+	/\
+		(
+			geefVoorsorteervak s1 = rechtdoor
+		\/
+			~(geefVoorsorteervak s1 = rechtsaf
+		\/
+			(
+				geefVoorsorteervak s1 = linksaf
+			/\
+				(
+					geefVoorsorteervak s = rechtdoor
+				\/
+					geefVoorsorteervak s = linksaf
+				)
+			)
+		)
+.
+(* Controleert of s1 (90° met de klok mee in ten opzichte van s) en s elkaar kruisen*)
+
 Definition isVeilig :=
     forall t:T,
         forall s:S,
