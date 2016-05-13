@@ -103,7 +103,7 @@ Variable S : Set.
 (* Verzameling van alle stoplichten die tot ons artefact behoren *)
 
 Variable V : Set.
-(* Verzameling van alle voorsoorteervakken die tot ons artefact behoren *)
+(* Verzameling van alle voorsorteervakken die tot ons artefact behoren *)
 
 Definition T := R.
 (* Verzameling van alle tijdpunten in seconden *)
@@ -119,7 +119,7 @@ Inductive WR:Set := noord | oost | zuid | west.
 
 (* Constanten (inclusief betekenis) *)
 Definition tijdGroen := 30.
-(* Geeft aan hoelang stoplichten groen blijven *)
+(* Geeft aan hoe lang stoplichten groen blijven *)
 
 (* Functies (inclusief betekenis) *)
 Variable geefRichting (* v *) : V -> RV.
@@ -170,7 +170,7 @@ Definition moetGroenWorden (t:T) (s:S) :=
     /\
         geefKleur t s <> groen
 .
-(* Geeft aan of stoplicht s op tijpunt t groen moet worden *)
+(* Geeft aan of stoplicht s op tijdpunt t groen moet worden *)
 
 Definition roodWorden (t:T) (s:S) :=
         (
@@ -391,7 +391,7 @@ Definition isVeilig :=
    ]
 *)
 
-Definition bestuuringseenheid :=
+Definition besturingseenheid :=
     forall t:T,
         forall s:S,
                 groenWorden t s
