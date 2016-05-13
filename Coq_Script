@@ -409,19 +409,19 @@ Definition stoplicht (s:S) :=
             (
                     geefKleur t s = groen
                 ->
-                    isGroen (t+1) s
+                    geefKleur (t+1) s = groen
             )
         /\
             (
                     geefKleur t s = oranje
                 ->
-                    isOranje (t+1) s
+                    geefKleur (t+1) s = oranje
             )
         /\
             (
                     geefKleur t s = rood
                 ->
-                    isRood (t+1) s
+                    geefKleur (t+1) s = rood
             )
 .
 (*
