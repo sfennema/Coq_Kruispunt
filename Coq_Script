@@ -177,12 +177,12 @@ Definition roodWorden (t:T) (s:S) :=
             forall t1:T,
                     t1 in [t-tijdGroen, t]
                 ->
-                    isGroen t1 s
+                    geefKleur t1 s = groen
         )
     ->
-            isOranje (t+1) s
+            geefKleur (t+1) s = oranje
         /\
-            isRood (t+2) s
+            geefKleur (t+2) s = rood
 .
 (*
     Geeft aan dat stoplicht s als het in de afgelopen <tijdGroen> seconden groen was op tijdpunt t+1 de kleur oranje wordt gegeven
