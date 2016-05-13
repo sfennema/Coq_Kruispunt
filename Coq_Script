@@ -106,7 +106,7 @@ Variable V : Set.
 (* Verzameling van alle voorsoorteervakken die tot ons artefact behoren *)
 
 Definition T := R.
-(* Verzameling van alle tijdpunten *)
+(* Verzameling van alle tijdpunten in seconden *)
 
 Inductive RV:Set := rechtsaf | rechtdoor | linksaf.
 (* Eindige set met alle voorsorteerrichtingen *)
