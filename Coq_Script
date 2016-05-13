@@ -172,9 +172,8 @@ Definition moetGroenWorden (t:T) (s:S) :=
 .
 (* Geeft aan of stoplicht s op tijpunt t groen moet worden *)
 
-Definition roodWorden (t:T) (s:S) :=
+Definition roodWorden (t t1:T) (s:S) :=
         (
-            forall t1:T,
                     t1 in [t-tijdGroen, t]
                 ->
                     geefKleur t1 s = groen
@@ -363,12 +362,10 @@ Definition groenWorden (t:T) (s:S) :=
 .
 (* Geeft aan dat stoplicht s op moment t+1 groen wordt als het op moment t groen moet worden en groen mag worden *)
 
-Definition isVeilig :=
-    forall t:T,
-        forall s:S,
-                geefKleur (t+1) s = groen
-            ->
-                magGroenWorden t s
+Definition isVeilig (t:T) (s:S) :=
+      geefKleur (t+1) s = groen
+  ->
+      magGroenWorden t s
 .
 (* Geeft aan dat als aan een stoplicht de kleur groen wordt gegeven dat het groen mag worden *)
 
@@ -391,12 +388,10 @@ Definition isVeilig :=
    ]
 *)
 
-Definition bestuuringseenheid :=
-    forall t:T,
-        forall s:S,
-                groenWorden t s
-            /\
-                roodWorden t s
+Definition bestuuringseenheid (t:T) (s:S) :=
+      groenWorden t s
+  /\
+      roodWorden t s
 .
 (*
     Voor alle tijpunten en alle stoplichten geldt:
@@ -404,25 +399,24 @@ Definition bestuuringseenheid :=
     - ze worden eerst oranje en daarna rood nadat ze <tijdGroen> seconden groen waren
 *)
 
-Definition stoplicht (s:S) :=
-    forall t:T,
-            (
-                    geefKleur t s = groen
-                ->
-                    geefKleur (t+1) s = groen
-            )
-        /\
-            (
-                    geefKleur t s = oranje
-                ->
-                    geefKleur (t+1) s = oranje
-            )
-        /\
-            (
-                    geefKleur t s = rood
-                ->
-                    geefKleur (t+1) s = rood
-            )
+Definition stoplicht (s:S) (t:T) :=
+      (
+               geefKleur t s = groen
+          ->
+               isGroen (t+1) s
+      )
+  /\
+      (
+               geefKleur t s = oranje
+          ->
+               isOranje (t+1) s
+      )
+  /\
+      (
+               geefKleur t s = rood
+          ->
+               isRood (t+1) s
+      )
 .
 (*
     Stoplicht s wijzigt zijn kleur op de volgende tijdstip nadat hij een bijbehorend signaal heeft gekregen.
@@ -446,19 +440,17 @@ Definition stoplicht (s:S) :=
      - Eventueel een korte toelichting over gemaakte keuzes.
   ]
 *)
-Definition kruispunt :=
-	forall t:T,
-		forall v:V,
-			autoAanwezig t v
-		  ->
-			exists t1:T,
-				t1 > t
-			  /\
-			  	isGroen t1 (geefStoplicht v)
-			  /\
-			  	isOranje (t1+tijdGroen+2) (geefStoplicht v)
-			  /\
-			  	isRood (t1+tijdGroen+3) (geefStoplicht v)
+Definition kruispunt (t:T) (v:V) :=
+	autoAanwezig t v
+->
+	exists t1:T,
+		t1 > t
+	  /\
+	  	isGroen t1 (geefStoplicht v)
+	  /\
+	  	isOranje (t1+tijdGroen+2) (geefStoplicht v)
+	  /\
+	  	isRood (t1+tijdGroen+3) (geefStoplicht v)
 .
 (*
     Voor alle tijdpunten en alle voorsorteervakken geldt dat als er op
