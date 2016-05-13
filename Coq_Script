@@ -270,8 +270,7 @@ Definition isLinksVan (s s1:S) :=
  /\ 
 		isTegenoverVan s s1
         /\
-            ~(
-            		(
+            		~(
             			geefRichting(geefVoorsorteervak s) = rechtdoor
                 	    /\
                 	        (
@@ -281,7 +280,7 @@ Definition isLinksVan (s s1:S) :=
                 	        )
                 	)
                 \/
-                	(
+                	~(
                 		geefRichting(geefVoorsorteervak s) = rechtsaf
                 	    /\
                 	        (
