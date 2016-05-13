@@ -1,3 +1,4 @@
+
 Require Import BenB.
 
 (* ====================================================================== *)
@@ -108,22 +109,51 @@ Variable V : Set.
 Definition T := R.
 (* Verzameling van alle tijdpunten *)
 
-Inductive RV := rechtsaf | rechtdoor | linksaf.
+Inductive RV:Set := rechtsaf | rechtdoor | linksaf.
 (* Eindige set met alle voorsorteerrichtingen *)
 
-Inductive K := rood | groen | oranje.
+Inductive K:Set := rood | groen | oranje.
 (* Eindige set met alle kleuren van stoplichten *)
 
+Inductive WR:Set := noord | oost | zuid | west.
+(* Eindige set met windrichtingen *)
+
 (* Constanten (inclusief betekenis) *)
+Definition tijdGroen := 30.
+(* Geeft aan hoelang stoplichten groen blijven *)
 
 (* Functies (inclusief betekenis) *)
 Variable geefRichting (* v *) : V -> RV.
 (* Geeft de voorsorteerrichting voor voorsorteervak v *)
 
+Variable geefStoplicht (* v *): V -> S.
+(* Geeft het stoplicht dat hoort bij voorsorteervak v *)
+
+Variable geefVoorsorteervak (* s *) : S -> V.
+(* Geeft het voorsorteervak dat hoort bij stoplicht s *)
+
+Variable geefWindrichting (* s *) : S -> WR.
+(* Geeft de windrichting bij stoplicht s *)
+
+Variable geefKleur (* t s *): T -> S -> K.
+(* Geeft de stoplichtkleur voor stoplicht s op tijdpunt t *)
+
 (* Predikaten (inclusief betekenis en metingen) *)
 Variable autoAanwezig (* t v *): T -> V -> Prop.
-(* Op tijdstip t is er een auto aanwezig in vorsorteervak v *)
+(* Op tijdstip t is er een auto aanwezig in voorsorteervak v *)
 (* Kijken *)
+
+Variable isGroen (* t s *) : T -> S -> Prop.
+(* Op tijdstip t geeft stoplicht s groen licht *)
+(* Kijk naar de golflengte *)
+
+Variable isOranje (* t s *) : T -> S -> Prop.
+(* Op tijdstip t geeft stoplicht s oranje licht *)
+(* Kijk naar de golflengte *)
+
+Variable isRood (* t s *) : T -> S -> Prop.
+(* Op tijdstip t geeft stoplicht s rood licht *)
+(* Kijk naar de golflengte *)
 
 (* ====================================================================== *)
 
@@ -135,6 +165,224 @@ Variable autoAanwezig (* t v *): T -> V -> Prop.
      maar geef wel bij elke definitie de betekenis.
    ]
 *)
+
+Definition moetGroenWorden (t:T) (s:S) :=
+        autoAanwezig t (geefVoorsorteervak s)
+    /\
+        geefKleur t s <> groen
+.
+(* Geeft aan of stoplicht s op tijpunt t groen moet worden *)
+
+Definition roodWorden (t:T) (s:S) :=
+        (
+            forall t1:T,
+                    t1 in [t-tijdGroen, t]
+                ->
+                    geefKleur t1 s = groen
+        )
+    ->
+            geefKleur (t+1) s = oranje
+        /\
+            geefKleur (t+2) s = rood
+.
+(*
+    Geeft aan dat stoplicht s als het in de afgelopen <tijdGroen> seconden groen was op tijdpunt t+1 de kleur oranje wordt gegeven
+    en op tijdpunt t+2 de kleur rood wordt gegeven
+*)
+
+Definition isTegenoverVan (s s1:S) :=
+      geefWindrichting s = noord
+    /\
+      geefWindrichting s1 = zuid
+  \/
+      geefWindrichting s = zuid
+    /\
+      geefWindrichting s1 = noord
+  \/
+      geefWindrichting s = oost
+    /\
+      geefWindrichting s1 = west
+  \/
+      geefWindrichting s = west
+    /\
+    geefWindrichting s1 = oost
+.
+ (* Controleert of stoplicht s tegenover van stoplicht s1 staat *)
+
+Definition isRechtsVan (s s1:S) :=
+          geefWindrichting s = noord
+      /\
+          geefWindrichting s1 = west
+  \/
+          geefWindrichting s = west
+      /\
+          geefWindrichting s1 = zuid
+  \/
+          geefWindrichting s = zuid
+      /\
+          geefWindrichting s1 = oost
+  \/
+          geefWindrichting s = oost
+      /\
+          geefWindrichting s1 = noord
+.
+(* Controleert of stoplicht s1 90° tegen de klok in ten opzichte van stoplicht s ligt *)
+
+Definition isLinksVan (s s1:S) :=
+
+          geefWindrichting s = noord
+      /\
+          geefWindrichting s1 = oost
+  \/
+          geefWindrichting s = oost
+      /\
+          geefWindrichting s1 = zuid
+  \/
+          geefWindrichting s = zuid
+      /\
+          geefWindrichting s1 = west
+  \/
+          geefWindrichting s = west
+      /\
+          geefWindrichting s1 = noord
+.
+(* Controleert of stoplicht s1 90° met de klok mee ten opzichte van stoplicht s ligt *)
+ 
+ Definition kruisenTegenover (s s1:S) :=
+ 	s <> s1
+ /\ 
+		isTegenoverVan s s1
+        /\
+            ~(
+            		(
+            			geefRichting(geefVoorsorteervak s) = rechtdoor
+                	    /\
+                	        (
+                	            geefRichting(geefVoorsorteervak s1) = rechtdoor 
+                	        \/
+                	            geefRichting(geefVoorsorteervak s1) = rechtsaf
+                	        )
+                	)
+                \/
+                	(
+                		geefRichting(geefVoorsorteervak s) = rechtsaf
+                	    /\
+                	        (
+                	            geefRichting(geefVoorsorteervak s1) = rechtdoor
+                	        \/
+                	            geefRichting(geefVoorsorteervak s1) = rechtsaf
+				)
+                	)
+            )
+.            
+(* Controleert of stoplichten s en s1 die tegenover elkaar staan kruisen *)
+
+ Definition kruisenRechts (s s1:S) :=
+ 	s <> s1
+ /\ 
+		isTegenoverVan s s1
+        /\
+            ~(
+            		(
+            			geefRichting(geefVoorsorteervak s) = rechtdoor
+                	    /\
+                	        (
+                	            geefRichting(geefVoorsorteervak s1) = rechtdoor 
+                	        \/
+                	            geefRichting(geefVoorsorteervak s1) = rechtsaf
+                	        )
+                	)
+                \/
+                	(
+                		geefRichting(geefVoorsorteervak s) = rechtsaf
+                	    /\
+                	        (
+                	            geefRichting(geefVoorsorteervak s1) = rechtdoor
+                	        \/
+                	            geefRichting(geefVoorsorteervak s1) = rechtsaf
+				)
+                	)
+            )
+.            
+(* Controleert of s1 (90° tegen de klok in ten opzichte van s) en s elkaar kruisen *)
+
+Definition kruisenLinks (s s1:S) :=
+		s <> s1
+	/\
+		isLinksVan s s1
+	/\
+		(
+			geefRichting(geefVoorsorteervak s1) = rechtdoor
+		\/
+			~(geefRichting(geefVoorsorteervak s1) = rechtsaf)
+		\/
+			(
+				geefRichting(geefVoorsorteervak s1) = linksaf
+			/\
+				(
+					geefRichting(geefVoorsorteervak s) = rechtdoor
+				\/
+					geefRichting(geefVoorsorteervak s) = linksaf
+				)
+			)
+		)
+.
+(* Controleert of s1 (90° met de klok mee in ten opzichte van s) en s elkaar kruisen*)
+
+Definition kruisen (s s1 : S) :=
+        (
+            isTegenoverVan s s1
+        ->
+            kruisenTegenover s s1
+        )
+    /\
+        (
+            isRechtsVan s s1
+        ->
+            kruisenRechts s s1
+        )
+    /\
+        (
+            isLinksVan s s1
+        ->
+            kruisenLinks s s1
+        )
+.
+(* Geeft aan of stoplicht s met stoplicht s1 kruist *)
+
+Definition magGroenWorden (t:T) (s:S) :=
+   forall s1:S,
+         s <> s1
+      ->
+         (
+            ~kruisen s s1
+         \/
+            (
+               kruisen s s1
+            ->
+               isRood t s1
+            )
+         )
+.
+(* Geeft aan of stoplicht s op tijdpunt t groen mag worden. *)
+
+Definition groenWorden (t:T) (s:S) :=
+          moetGroenWorden t s
+      /\
+          magGroenWorden t s
+  ->
+      geefKleur (t+1) s = groen
+.
+(* Geeft aan dat stoplicht s op moment t+1 groen wordt als het op moment t groen moet worden en groen mag worden *)
+
+Definition isVeilig :=
+    forall t:T,
+        forall s:S,
+                geefKleur (t+1) s = groen
+            ->
+                magGroenWorden t s
+.
+(* Geeft aan dat als aan een stoplicht de kleur groen wordt gegeven dat het groen mag worden *)
 
 (* ====================================================================== *)
 
@@ -155,6 +403,43 @@ Variable autoAanwezig (* t v *): T -> V -> Prop.
    ]
 *)
 
+Definition bestuuringseenheid :=
+    forall t:T,
+        forall s:S,
+                groenWorden t s
+            /\
+                roodWorden t s
+.
+(*
+    Voor alle tijpunten en alle stoplichten geldt:
+    - ze worden groen als ze groen moeten en mogen worden
+    - ze worden eerst oranje en daarna rood nadat ze <tijdGroen> seconden groen waren
+*)
+
+Definition stoplicht (s:S) :=
+    forall t:T,
+            (
+                    geefKleur t s = groen
+                ->
+                    isGroen (t+1) s
+            )
+        /\
+            (
+                    geefKleur t s = oranje
+                ->
+                    isOranje (t+1) s
+            )
+        /\
+            (
+                    geefKleur t s = rood
+                ->
+                    isRood (t+1) s
+            )
+.
+(*
+    Stoplicht s wijzigt zijn kleur op de volgende tijdstip nadat hij een bijbehorend signaal heeft gekregen.
+*)
+
 (* ====================================================================== *)
 
 (* Specificatie van het geheel *)
@@ -172,6 +457,30 @@ Variable autoAanwezig (* t v *): T -> V -> Prop.
        uiteraard consistent is met de formule voor Coq.
      - Eventueel een korte toelichting over gemaakte keuzes.
   ]
+*)
+Definition kruispunt :=
+	forall t:T,
+		forall v:V,
+			autoAanwezig t v
+		  ->
+			exists t1:T,
+				t1 > t
+			  /\
+			  	isGroen t1 (geefStoplicht v)
+			  /\
+			  	isOranje (t1+tijdGroen+2) (geefStoplicht v)
+			  /\
+			  	isRood (t1+tijdGroen+3) (geefStoplicht v)
+.
+(*
+    Voor alle tijdpunten en alle voorsorteervakken geldt dat als er op
+    tijdpunt t een auto in voorsorteervak v staat dan is er een later
+    tijdpunt t1 waarvoor geldt dat het bij voorsorteervak v horende
+    stoplicht op moment t1 groen, op moment t1+<tijdGroen>+2 oranje,
+    en op tijdpunt t1+<tijdGroen>+3 rood is.
+
+    Wij hebben ervoor gekozen om geen stroom in ons model op te nemen omdat het
+    niet interessant is en naar onze mening niets toevoegt.
 *)
 
 (* ====================================================================== *)
